@@ -4717,24 +4717,6 @@ definitions:
         type: STRING
       - name: server.port
         type: LONG
-    messaging.client.operation.duration-f4822aab:
-      name: messaging.client.operation.duration
-      description: Duration of messaging operation initiated by a producer or consumer
-        client.
-      instrument: histogram
-      data_type: HISTOGRAM
-      unit: s
-      attributes:
-      - name: messaging.consumer.group.name
-        type: STRING
-      - name: messaging.destination.name
-        type: STRING
-      - name: messaging.operation.name
-        type: STRING
-      - name: messaging.operation.type
-        type: STRING
-      - name: messaging.system
-        type: STRING
     messaging.client.sent.messages-38a90199:
       name: messaging.client.sent.messages
       description: Number of messages producer attempted to send to the broker.
@@ -8956,6 +8938,7 @@ libraries:
   has_javaagent: true
   javaagent_target_versions:
   - com.couchbase.client:java-client:[3.2.0,)
+  - com.couchbase.client:java-client:[3.4.3,)
   configuration_refs:
   - otel.instrumentation.couchbase.emit-experimental-telemetry-28ea332f
   - otel.instrumentation.couchbase.experimental-span-attributes
@@ -9560,8 +9543,6 @@ libraries:
         type: LONG
       - name: server.address
         type: STRING
-      - name: server.port
-        type: LONG
 - name: executors
   display_name: Java Executors
   description: |
@@ -17344,7 +17325,7 @@ libraries:
   - when: otel.semconv-stability.preview=messaging
     metric_refs:
     - messaging.client.consumed.messages-73097de6
-    - messaging.client.operation.duration-f4822aab
+    - messaging.client.operation.duration-68138657
     - messaging.client.sent.messages-a16c8de0
     - messaging.process.duration-b45860c7
     spans:
